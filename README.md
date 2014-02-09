@@ -115,20 +115,18 @@ The following resources contain more information
 
 ## Installation via Composer
 
-Add `"joomla/facebook": "dev-master"` to the require block in your composer.json, make sure you have `"minimum-stability": "dev"` and then run `composer install`.
+Add `"joomla/facebook": "~1.0"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
 	"require": {
-		"joomla/facebook": "dev-master"
-	},
-	"minimum-stability": "dev"
+		"joomla/facebook": "~1.0"
+	}
 }
 ```
 
 Alternatively, you can simply run the following from the command line:
 
 ```sh
-composer init --stability="dev"
-composer require joomla/facebook "dev-master"
+composer require joomla/facebook "~1.0"
 ```
