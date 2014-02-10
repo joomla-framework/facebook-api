@@ -1,4 +1,4 @@
-## The Facebook Package
+## The Facebook Package [![Build Status](https://travis-ci.org/joomla-framework/facebook-api.png?branch=master)](https://travis-ci.org/joomla-framework/facebook-api)
 
 ### Using the Facebook Package
 
