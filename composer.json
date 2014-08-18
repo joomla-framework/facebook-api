@@ -20,9 +20,13 @@
     },
     "autoload": {
     	"psr-4": {
-    		"Joomla\\Facebook\\": "src/",
-            "Joomla\\Facebook\\Tests\\": "Tests/"
+    		"Joomla\\Facebook\\": "src/"
     	}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Joomla\\Facebook\\Tests\\": "Tests/"
+        }
     }
 }
 
