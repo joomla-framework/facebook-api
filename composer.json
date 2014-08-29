@@ -13,16 +13,18 @@
         "joomla/uri": "~1.0"
     },
     "require-dev": {
-        "joomla/test": "~1.0"
+        "joomla/test": "~1.0",
+        "phpunit/phpunit": "4.*",
+        "squizlabs/php_codesniffer": "1.*"
     },
     "suggest": {
         "joomla/registry": "Registry can be used as an alternative to using an array for the package options."
     },
     "autoload": {
-    	"psr-4": {
-    		"Joomla\\Facebook\\": "src/",
+        "psr-4": {
+            "Joomla\\Facebook\\": "src/",
             "Joomla\\Facebook\\Tests\\": "Tests/"
-    	}
+        }
     }
 }
 
