@@ -25,6 +25,11 @@
             "Joomla\\Facebook\\": "src/",
             "Joomla\\Facebook\\Tests\\": "Tests/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
     }
 }
 
