@@ -115,12 +115,12 @@ The following resources contain more information
 
 ## Installation via Composer
 
-Add `"joomla/facebook": "~1.0"` to the require block in your composer.json and then run `composer install`.
+Add `"joomla/facebook": "2.0.*@dev"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
 	"require": {
-		"joomla/facebook": "~1.0"
+		"joomla/facebook": "2.0.*@dev"
 	}
 }
 ```
@@ -128,5 +128,5 @@ Add `"joomla/facebook": "~1.0"` to the require block in your composer.json and t
 Alternatively, you can simply run the following from the command line:
 
 ```sh
-composer require joomla/facebook "~1.0"
+composer require joomla/facebook "2.0.*@dev"
 ```
