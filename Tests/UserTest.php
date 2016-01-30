@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -91,8 +91,8 @@ class UserTest extends FacebookTestCase
 		else
 		{
 			// User is not authenticated.
-			$token = $this->object->getOAuth();
-			$this->object->setOAuth(null);
+			$token = $this->object->getOauth();
+			$this->object->setOauth(null);
 
 			$this->client->expects($this->once())
 			->method('get')
@@ -105,7 +105,7 @@ class UserTest extends FacebookTestCase
 			);
 
 			// Authenticated.
-			$this->object->setOAuth($token);
+			$this->object->setOauth($token);
 		}
 	}
 
@@ -138,8 +138,8 @@ class UserTest extends FacebookTestCase
 		else
 		{
 			// User is not authenticated.
-			$token = $this->object->getOAuth();
-			$this->object->setOAuth(null);
+			$token = $this->object->getOauth();
+			$this->object->setOauth(null);
 
 			$this->client->expects($this->once())
 			->method('get')
@@ -150,7 +150,7 @@ class UserTest extends FacebookTestCase
 			$this->object->getUser('me');
 
 			// Authenticated.
-			$this->object->setOAuth($token);
+			$this->object->setOauth($token);
 		}
 	}
 
@@ -562,8 +562,8 @@ class UserTest extends FacebookTestCase
 		else
 		{
 			// User is not authenticated.
-			$token = $this->object->getOAuth();
-			$this->object->setOAuth(null);
+			$token = $this->object->getOauth();
+			$this->object->setOauth(null);
 
 			$this->client->expects($this->once())
 			->method('get')
@@ -576,7 +576,7 @@ class UserTest extends FacebookTestCase
 			);
 
 			// Authenticated.
-			$this->object->setOAuth($token);
+			$this->object->setOauth($token);
 		}
 	}
 

@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Facebook Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -283,7 +283,7 @@ abstract class Object
 	 *
 	 * @since   1.0
 	 */
-	public function setOAuth($oauth)
+	public function setOauth($oauth)
 	{
 		$this->oauth = $oauth;
 
@@ -297,7 +297,7 @@ abstract class Object
 	 *
 	 * @since   1.0
 	 */
-	public function getOAuth()
+	public function getOauth()
 	{
 		return $this->oauth;
 	}
