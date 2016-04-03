@@ -213,7 +213,7 @@ abstract class Object
 	 *
 	 * @since   1.0
 	 */
-	public function createConnection($object, $connection = null, $parameters = null, array $headers = null)
+	public function createConnection($object, $connection = null, $parameters = null, array $headers = array())
 	{
 		if ($this->oauth->isAuthenticated())
 		{
