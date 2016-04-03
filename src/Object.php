@@ -112,7 +112,7 @@ abstract class Object
 	 * @since    1.0
 	 * @throws   \RuntimeException
 	 */
-	public function sendRequest($path, $data = '', array $headers = null, $limit = 0, $offset = 0, $until = null, $since = null)
+	public function sendRequest($path, $data = '', array $headers = array(), $limit = 0, $offset = 0, $until = null, $since = null)
 	{
 		// Send the request.
 		$response = $this->client->get($this->fetchUrl($path, $limit, $offset, $until, $since), $headers);
