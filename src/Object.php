@@ -198,7 +198,7 @@ abstract class Object
 		}
 
 		// Send the request.
-		return $this->sendRequest($path, '', null, $limit, $offset, $until, $since);
+		return $this->sendRequest($path, '', array(), $limit, $offset, $until, $since);
 	}
 
 	/**
