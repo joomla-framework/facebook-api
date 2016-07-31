@@ -36,7 +36,7 @@ class ObjectTest extends FacebookTestCase
 		$_SERVER['SCRIPT_NAME'] = '/index.php';
 
 		$this->options = array();
-		$this->client = $this->getMock('Joomla\\Http\\Http', array('get', 'post', 'delete', 'put'));
+		$this->client = $this->getMockBuilder('Joomla\\Http\\Http')->getMock();
 
 		$this->object = new ObjectMock($this->options, $this->client);
 	}

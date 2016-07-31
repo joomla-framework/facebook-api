@@ -43,7 +43,7 @@ class OAuthTest extends FacebookTestCase
 		$_SERVER['SCRIPT_NAME'] = '/index.php';
 
 		$this->options = array();
-		$this->client = $this->getMock('Joomla\\Http\\Http', array('get', 'post', 'delete', 'put'));
+		$this->client = $this->getMockBuilder('Joomla\\Http\\Http')->getMock();
 		$this->input = new Input;
 
 		$this->application = new WebInspector;
