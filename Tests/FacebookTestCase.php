@@ -9,13 +9,14 @@ namespace Joomla\Facebook\Tests;
 use Joomla\Facebook\OAuth;
 use Joomla\Input\Input;
 use Joomla\Test\WebInspector;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test case for Facebook.
  *
  * @since  1.0
  */
-class FacebookTestCase extends \PHPUnit_Framework_TestCase
+class FacebookTestCase extends TestCase
 {
 	/**
 	 * @var    array  Options for the Facebook object.

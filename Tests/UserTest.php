@@ -10,8 +10,6 @@ use Joomla\Facebook\User;
 use Joomla\Http\Response;
 use stdClass;
 
-require_once __DIR__ . '/case/FacebookTestCase.php';
-
 /**
  * Test class for Joomla\Facebook\User.
  *
@@ -146,7 +144,16 @@ class UserTest extends FacebookTestCase
 			->with('me')
 			->will($this->returnValue($returnData));
 
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUser('me');
 
 			// Authenticated.
@@ -210,7 +217,16 @@ class UserTest extends FacebookTestCase
 		->with('me/friends?access_token=' . $token['access_token'])
 		->will($this->returnValue($returnData));
 
-		$this->setExpectedException('RuntimeException');
+		// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+		if (method_exists($this, 'expectException'))
+		{
+			$this->expectException('RuntimeException');
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+		}
+
 		$this->object->getFriends('me');
 	}
 
@@ -778,7 +794,16 @@ class UserTest extends FacebookTestCase
 		->with($notification . '?access_token=' . $token['access_token'], $data)
 		->will($this->returnValue($returnData));
 
-		$this->setExpectedException('RuntimeException');
+		// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+		if (method_exists($this, 'expectException'))
+		{
+			$this->expectException('RuntimeException');
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+		}
+
 		$this->object->updateNotification($notification);
 	}
 
@@ -891,7 +916,16 @@ class UserTest extends FacebookTestCase
 		->with('me/permissions?permission=' . $permission . '&access_token=' . $token['access_token'])
 		->will($this->returnValue($returnData));
 
-		$this->setExpectedException('RuntimeException');
+		// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+		if (method_exists($this, 'expectException'))
+		{
+			$this->expectException('RuntimeException');
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+		}
+
 		$this->object->deletePermission('me', $permission);
 	}
 

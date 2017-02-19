@@ -9,8 +9,6 @@ namespace Joomla\Facebook\Tests;
 use Joomla\Facebook\Link;
 use stdClass;
 
-require_once __DIR__ . '/case/FacebookTestCase.php';
-
 /**
  * Test class for Joomla\Facebook\Link.
  *

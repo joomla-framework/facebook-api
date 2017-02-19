@@ -8,7 +8,6 @@ namespace Joomla\Facebook\Tests;
 
 use Joomla\Test\TestHelper;
 
-require_once __DIR__ . '/case/FacebookTestCase.php';
 require_once __DIR__ . '/stubs/ObjectMock.php';
 
 /**

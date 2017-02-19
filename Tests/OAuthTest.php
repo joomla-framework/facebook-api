@@ -11,8 +11,6 @@ use Joomla\Input\Input;
 use Joomla\Test\WebInspector;
 use Joomla\Test\TestHelper;
 
-require_once __DIR__ . '/case/FacebookTestCase.php';
-
 /**
  * Test class for Joomla\Facebook\OAuth.
  *
