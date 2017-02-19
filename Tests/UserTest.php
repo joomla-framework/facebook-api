@@ -10,8 +10,6 @@ use Joomla\Facebook\User;
 use Joomla\Http\Response;
 use stdClass;
 
-require_once __DIR__ . '/case/FacebookTestCase.php';
-
 /**
  * Test class for Joomla\Facebook\User.
  *
