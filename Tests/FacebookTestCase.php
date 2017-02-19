@@ -7,8 +7,6 @@
 namespace Joomla\Facebook\Tests;
 
 use Joomla\Facebook\OAuth;
-use Joomla\Input\Input;
-use Joomla\Test\WebInspector;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,7 +41,7 @@ class FacebookTestCase extends TestCase
 	protected $object;
 
 	/**
-	 * @var    WebInspector  The application object to send HTTP headers for redirects.
+	 * @var    \Joomla\Application\AbstractWebApplication  The application object to send HTTP headers for redirects.
 	 */
 	protected $application;
 
@@ -94,8 +92,8 @@ class FacebookTestCase extends TestCase
 		$this->options['authmethod'] = 'get';
 
 		$this->client = $this->getMockBuilder('Joomla\\Http\\Http')->getMock();
-		$this->input = new Input;
-		$this->application = new WebInspector;
+		$this->input = $this->getMockBuilder('Joomla\\Input\\Input')->getMock();
+		$this->application = $this->getMockForAbstractClass('Joomla\\Application\\AbstractWebApplication');
 		$this->oauth = new OAuth($this->options, $this->client, $this->input, $this->application);
 		$this->oauth->setToken($access_token);
 	}
