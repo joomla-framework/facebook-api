@@ -11,7 +11,7 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Photo class for the Joomla Framework.
  *
- * @link    https://developers.facebook.com/docs/reference/api/photo/
+ * @link   https://developers.facebook.com/docs/reference/api/photo/
  * @since  1.0
  */
 class Photo extends Object

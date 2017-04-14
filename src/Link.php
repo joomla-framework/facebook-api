@@ -11,7 +11,7 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Link class for the Joomla Framework.
  *
- * @link    https://developers.facebook.com/docs/reference/api/link/
+ * @link   https://developers.facebook.com/docs/reference/api/link/
  * @since  1.0
  */
 class Link extends Object

@@ -11,7 +11,7 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Post class for the Joomla Framework.
  *
- * @link    https://developers.facebook.com/docs/reference/api/post/
+ * @link   https://developers.facebook.com/docs/reference/api/post/
  * @since  1.0
  */
 class Post extends Object
