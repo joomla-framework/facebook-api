@@ -11,7 +11,7 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Checkin class for the Joomla Framework.
  *
- * @see    http://developers.facebook.com/docs/reference/api/checkin/
+ * @link   https://developers.facebook.com/docs/reference/api/checkin/
  * @since  1.0
  */
 class Checkin extends Object
