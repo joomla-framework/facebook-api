@@ -1336,8 +1336,18 @@ class EventTest extends FacebookTestCase
 		$type = 'large';
 
 		$returnData = new Response;
-		$returnData->code = 302;
-		$returnData->headers['Location'] = $this->sampleUrl;
+
+		// Handle the response object differently based on whether we're using joomla/http 2.0
+		if (method_exists($returnData, 'getStatusCode'))
+		{
+			$returnData = $returnData->withStatus(302);
+			$returnData = $returnData->withHeader('Location', $this->sampleUrl);
+		}
+		else
+		{
+			$returnData->code = 302;
+			$returnData->headers['Location'] = $this->sampleUrl;
+		}
 
 		$this->client->expects($this->once())
 		->method('get')
