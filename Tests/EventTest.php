@@ -1350,14 +1350,26 @@ class EventTest extends FacebookTestCase
 		}
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($event . '/picture?redirect=false&type=' . $type . '&access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+			->method('get')
+			->with($event . '/picture?redirect=false&type=' . $type . '&access_token=' . $token['access_token'])
+			->willReturn($returnData);
 
-		$this->assertThat(
-			$this->object->getPicture($event, false, $type),
-			$this->equalTo($this->sampleUrl)
-		);
+
+		// Handle the response object differently based on whether we're using joomla/http 2.0
+		if (method_exists($returnData, 'getStatusCode'))
+		{
+			$this->assertThat(
+				$this->object->getPicture($event, false, $type),
+				$this->equalTo(array($this->sampleUrl))
+			);
+		}
+		else
+		{
+			$this->assertThat(
+				$this->object->getPicture($event, false, $type),
+				$this->equalTo($this->sampleUrl)
+			);
+		}
 	}
 
 	/**
