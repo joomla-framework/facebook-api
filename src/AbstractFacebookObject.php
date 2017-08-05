@@ -14,7 +14,7 @@ use Joomla\Uri\Uri;
 /**
  * Facebook API object class for the Joomla Framework.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.2.0
  */
 abstract class AbstractFacebookObject
 {
@@ -22,7 +22,7 @@ abstract class AbstractFacebookObject
 	 * Options for the Facebook object.
 	 *
 	 * @var    array
-	 * @since  __DEPLOY_VERSION__
+	 * @since  1.2.0
 	 */
 	protected $options;
 
@@ -30,7 +30,7 @@ abstract class AbstractFacebookObject
 	 * The HTTP client object to use in sending HTTP requests.
 	 *
 	 * @var    Http
-	 * @since  __DEPLOY_VERSION__
+	 * @since  1.2.0
 	 */
 	protected $client;
 
@@ -38,7 +38,7 @@ abstract class AbstractFacebookObject
 	 * The OAuth client.
 	 *
 	 * @var    OAuth
-	 * @since  __DEPLOY_VERSION__
+	 * @since  1.2.0
 	 */
 	protected $oauth;
 
@@ -49,7 +49,7 @@ abstract class AbstractFacebookObject
 	 * @param   Http   $client   The HTTP client object.
 	 * @param   OAuth  $oauth    The OAuth client.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function __construct($options = array(), Http $client = null, OAuth $oauth = null)
 	{
@@ -71,7 +71,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  string  The request URL.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	protected function fetchUrl($path, $limit = 0, $offset = 0, $until = null, $since = null)
 	{
@@ -115,7 +115,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return   mixed  The request response.
 	 *
-	 * @since    __DEPLOY_VERSION__
+	 * @since    1.2.0
 	 * @throws   \RuntimeException
 	 */
 	public function sendRequest($path, $data = '', array $headers = array(), $limit = 0, $offset = 0, $until = null, $since = null)
@@ -141,7 +141,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  mixed   The decoded JSON response or false if the client is not authenticated.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function get($object)
 	{
@@ -176,7 +176,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  mixed   The decoded JSON response or false if the client is not authenticated.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function getConnection($object, $connection = null, $extra_fields = '', $limit = 0, $offset = 0, $until = null, $since = null)
 	{
@@ -217,7 +217,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  mixed   The decoded JSON response or false if the client is not authenticated.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function createConnection($object, $connection = null, $parameters = null, array $headers = array())
 	{
@@ -253,7 +253,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  mixed   The decoded JSON response or false if the client is not authenticated.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function deleteConnection($object, $connection = null, $extra_fields = '')
 	{
@@ -287,7 +287,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  AbstractFacebookObject  This object for method chaining.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function setOauth($oauth)
 	{
@@ -301,7 +301,7 @@ abstract class AbstractFacebookObject
 	 *
 	 * @return  OAuth  The OAuth client
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function getOauth()
 	{
