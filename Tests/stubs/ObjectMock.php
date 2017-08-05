@@ -1,12 +1,12 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
 namespace Joomla\Facebook\Tests;
 
-use Joomla\Facebook\Object;
+use Joomla\Facebook\AbstractFacebookObject;
 
 /**
  * Facebook mock object.
@@ -14,7 +14,7 @@ use Joomla\Facebook\Object;
  * @since  1.0
  */
 
-class ObjectMock extends Object
+class ObjectMock extends AbstractFacebookObject
 {
 	/**
 	 * Method to build and return a full request URL for the request.  This method will

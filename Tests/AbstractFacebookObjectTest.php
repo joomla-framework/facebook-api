@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -11,11 +11,11 @@ use Joomla\Test\TestHelper;
 require_once __DIR__ . '/stubs/ObjectMock.php';
 
 /**
- * Test class for Joomla\Facebook\Object.
+ * Test class for Joomla\Facebook\AbstractFacebookObject.
  *
  * @since  1.0
  */
-class ObjectTest extends FacebookTestCase
+class AbstractFacebookObjectTest extends FacebookTestCase
 {
 	/**
 	 * Sets up the fixture, for example, opens a network connection.
