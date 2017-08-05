@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/user/
  * @since  1.0
  */
-class User extends Object
+class User extends AbstractFacebookObject
 {
 	/**
 	 * Method to get the specified user's details. Authentication is required only for some fields.

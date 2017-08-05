@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/link/
  * @since  1.0
  */
-class Link extends Object
+class Link extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a link. Requires authentication and read_stream permission for non-public links.

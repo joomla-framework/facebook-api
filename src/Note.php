@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/note/
  * @since  1.0
  */
-class Note extends Object
+class Note extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a note. Requires authentication and user_notes or friends_notes permission for non-public notes.

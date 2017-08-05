@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/post/
  * @since  1.0
  */
-class Post extends Object
+class Post extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a post. Requires authentication and read_stream permission for all data.

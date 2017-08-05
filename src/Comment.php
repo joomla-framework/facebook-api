@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/Comment/
  * @since  1.0
  */
-class Comment extends Object
+class Comment extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a comment. Requires authentication.

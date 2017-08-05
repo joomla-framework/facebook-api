@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/photo/
  * @since  1.0
  */
-class Photo extends Object
+class Photo extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a photo. Requires authentication and user_photos or friends_photos permission for private photos.

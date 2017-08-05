@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/album/
  * @since  1.0
  */
-class Album extends Object
+class Album extends AbstractFacebookObject
 {
 	/**
 	 * Method to get an album. Requires authentication and user_photos or friends_photos permission for private photos.

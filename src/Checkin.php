@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/checkin/
  * @since  1.0
  */
-class Checkin extends Object
+class Checkin extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a checkin. Requires authentication and user_checkins or friends_checkins permission.

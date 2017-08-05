@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/video/
  * @since  1.0
  */
-class Video extends Object
+class Video extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a video. Requires authentication and user_videos or friends_videos permission for private videos.

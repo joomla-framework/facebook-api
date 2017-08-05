@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/status/
  * @since  1.0
  */
-class Status extends Object
+class Status extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a status message. Requires authentication.

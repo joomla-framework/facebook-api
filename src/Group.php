@@ -14,7 +14,7 @@ namespace Joomla\Facebook;
  * @link   https://developers.facebook.com/docs/reference/api/group/
  * @since  1.0
  */
-class Group extends Object
+class Group extends AbstractFacebookObject
 {
 	/**
 	 * Method to read a group. Requires authentication and user_groups or friends_groups permission for non-public groups.
