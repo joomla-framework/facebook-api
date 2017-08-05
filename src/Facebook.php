@@ -18,91 +18,121 @@ use Joomla\Http\Http;
 class Facebook
 {
 	/**
-	 * @var    array  Options for the Facebook object.
+	 * Options for the Facebook object.
+	 *
+	 * @var    array
 	 * @since  1.0
 	 */
 	protected $options;
 
 	/**
-	 * @var    \Joomla\Http\Http  The HTTP client object to use in sending HTTP requests.
+	 * The HTTP client object to use in sending HTTP requests.
+	 *
+	 * @var    Http
 	 * @since  1.0
 	 */
 	protected $client;
 
 	/**
-	 * @var    \Joomla\Facebook\OAuth  The OAuth client.
+	 * The OAuth client.
+	 *
+	 * @var    OAuth
 	 * @since  1.0
 	 */
 	protected $oauth;
 
 	/**
-	 * @var    \Joomla\Facebook\User  Facebook API object for user.
+	 * Facebook API object for user.
+	 *
+	 * @var    User
 	 * @since  1.0
 	 */
 	protected $user;
 
 	/**
-	 * @var    \Joomla\Facebook\Status  Facebook API object for status.
+	 * Facebook API object for status.
+	 *
+	 * @var    Status
 	 * @since  1.0
 	 */
 	protected $status;
 
 	/**
-	 * @var    \Joomla\Facebook\Checkin  Facebook API object for checkin.
+	 * Facebook API object for checkin.
+	 *
+	 * @var    Checkin
 	 * @since  1.0
 	 */
 	protected $checkin;
 
 	/**
-	 * @var    \Joomla\Facebook\Event  Facebook API object for event.
+	 * Facebook API object for event.
+	 *
+	 * @var    Event
 	 * @since  1.0
 	 */
 	protected $event;
 
 	/**
-	 * @var    \Joomla\Facebook\Group  Facebook API object for group.
+	 * Facebook API object for group.
+	 *
+	 * @var    Group
 	 * @since  1.0
 	 */
 	protected $group;
 
 	/**
-	 * @var    \Joomla\Facebook\Link  Facebook API object for link.
+	 * Facebook API object for link.
+	 *
+	 * @var    Link
 	 * @since  1.0
 	 */
 	protected $link;
 
 	/**
-	 * @var    \Joomla\Facebook\Note  Facebook API object for note.
+	 * Facebook API object for note.
+	 *
+	 * @var    Note
 	 * @since  1.0
 	 */
 	protected $note;
 
 	/**
-	 * @var    \Joomla\Facebook\Post  Facebook API object for post.
+	 * Facebook API object for post.
+	 *
+	 * @var    Post
 	 * @since  1.0
 	 */
 	protected $post;
 
 	/**
-	 * @var    \Joomla\Facebook\Comment  Facebook API object for comment.
+	 * Facebook API object for comment.
+	 *
+	 * @var    Comment
 	 * @since  1.0
 	 */
 	protected $comment;
 
 	/**
-	 * @var    \Joomla\Facebook\Photo  Facebook API object for photo.
+	 * Facebook API object for photo.
+	 *
+	 * @var    Photo
 	 * @since  1.0
 	 */
 	protected $photo;
 
 	/**
-	 * @var    \Joomla\Facebook\Video  Facebook API object for video.
+	 * Facebook API object for video.
+	 *
+	 * @var    Video
 	 * @since  1.0
 	 */
 	protected $video;
 
 	/**
-	 * @var    \Joomla\Facebook\Album  Facebook API object for album.
+	 * Facebook API object for album.
+	 *
+	 * @var    Album
 	 * @since  1.0
 	 */
 	protected $album;
@@ -134,7 +164,7 @@ class Facebook
 	 *
 	 * @param   string  $name  Name of property to retrieve
 	 *
-	 * @return  Object  Facebook API object (status, user, friends etc).
+	 * @return  AbstractFacebookObject  Facebook API object (status, user, friends etc).
 	 *
 	 * @since   1.0
 	 * @throws  \InvalidArgumentException If $name is not a valid sub class.

@@ -11,11 +11,11 @@ use Joomla\Test\TestHelper;
 require_once __DIR__ . '/stubs/ObjectMock.php';
 
 /**
- * Test class for Joomla\Facebook\Object.
+ * Test class for Joomla\Facebook\AbstractFacebookObject.
  *
  * @since  1.0
  */
-class ObjectTest extends FacebookTestCase
+class AbstractFacebookObjectTest extends FacebookTestCase
 {
 	/**
 	 * Sets up the fixture, for example, opens a network connection.

@@ -6,7 +6,7 @@
 
 namespace Joomla\Facebook\Tests;
 
-use Joomla\Facebook\Object;
+use Joomla\Facebook\AbstractFacebookObject;
 
 /**
  * Facebook mock object.
@@ -14,7 +14,7 @@ use Joomla\Facebook\Object;
  * @since  1.0
  */
 
-class ObjectMock extends Object
+class ObjectMock extends AbstractFacebookObject
 {
 	/**
 	 * Method to build and return a full request URL for the request.  This method will
