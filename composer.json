@@ -6,7 +6,7 @@
     "homepage": "https://github.com/joomla-framework/facebook-api",
     "license": "GPL-2.0+",
     "require": {
-        "php": "^5.5.9|~7.0",
+        "php": "~7.0",
         "joomla/oauth2": "^1.1.2|~2.0",
         "joomla/input": "~1.0|~2.0",
         "joomla/http": "~1.0|~2.0",
@@ -14,7 +14,7 @@
     },
     "require-dev": {
         "joomla/test": "~1.0",
-        "phpunit/phpunit": "^4.8.35|^5.4.3|~6.0",
+        "phpunit/phpunit": "~6.0",
         "squizlabs/php_codesniffer": "1.*"
     },
     "suggest": {
