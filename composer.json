@@ -4,7 +4,7 @@
     "description": "Joomla Facebook Package",
     "keywords": ["joomla", "framework", "facebook"],
     "homepage": "https://github.com/joomla-framework/facebook-api",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "require": {
         "php": "~7.0",
         "joomla/oauth2": "^1.1.2|~2.0",
