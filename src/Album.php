@@ -183,13 +183,13 @@ class Album extends AbstractFacebookObject
 	 */
 	public function getPicture($album, $redirect = true)
 	{
-		$extra_fields = '';
+		$extraFields = '';
 
 		if ($redirect == false)
 		{
-			$extra_fields = '?redirect=false';
+			$extraFields = '?redirect=false';
 		}
 
-		return $this->getConnection($album, 'picture', $extra_fields);
+		return $this->getConnection($album, 'picture', $extraFields);
 	}
 }

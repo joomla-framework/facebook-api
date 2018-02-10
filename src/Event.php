@@ -100,7 +100,8 @@ class Event extends AbstractFacebookObject
 	 * @since   1.0
 	 */
 	public function createPost($event, $message = null, $link = null, $picture = null, $name = null, $caption = null,
-		$description = null, $actions = null)
+		$description = null, $actions = null
+	)
 	{
 		// Set POST request parameters.
 		$data = array();
@@ -409,19 +410,19 @@ class Event extends AbstractFacebookObject
 	 */
 	public function getPicture($event, $redirect = true, $type = null)
 	{
-		$extra_fields = '';
+		$extraFields = '';
 
 		if ($redirect == false)
 		{
-			$extra_fields = '?redirect=false';
+			$extraFields = '?redirect=false';
 		}
 
 		if ($type)
 		{
-			$extra_fields .= (strpos($extra_fields, '?') === false) ? '?type=' . $type : '&type=' . $type;
+			$extraFields .= (strpos($extraFields, '?') === false) ? '?type=' . $type : '&type=' . $type;
 		}
 
-		return $this->getConnection($event, 'picture', $extra_fields);
+		return $this->getConnection($event, 'picture', $extraFields);
 	}
 
 	/**
