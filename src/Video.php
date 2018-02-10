@@ -49,7 +49,9 @@ class Video extends Object
 	}
 
 	/**
-	 * Method to comment on a video. Requires authentication and publish_stream permission, user_videos or friends_videos permission for private videos.
+	 * Method to comment on a video.
+	 *
+	 * Requires authentication and publish_stream permission, user_videos or friends_videos permission for private videos.
 	 *
 	 * @param   string  $video    The video id.
 	 * @param   string  $message  The comment's text.

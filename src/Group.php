@@ -158,7 +158,8 @@ class Group extends Object
 	 * @since   1.0
 	 */
 	public function createPost($group, $message = null, $link = null, $picture = null, $name = null, $caption = null,
-		$description = null, $actions = null)
+		$description = null, $actions = null
+	)
 	{
 		// Set POST request parameters.
 		if ($message)
