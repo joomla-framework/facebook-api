@@ -11,8 +11,9 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Video class for the Joomla Framework.
  *
- * @link   https://developers.facebook.com/docs/reference/api/video/
- * @since  1.0
+ * @link        https://developers.facebook.com/docs/reference/api/video/
+ * @since       1.0
+ * @deprecated  The joomla/facebook package is deprecated
  */
 class Video extends Object
 {

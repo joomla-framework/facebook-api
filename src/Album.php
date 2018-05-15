@@ -11,8 +11,9 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Album class for the Joomla Framework.
  *
- * @link   https://developers.facebook.com/docs/reference/api/album/
- * @since  1.0
+ * @link        https://developers.facebook.com/docs/reference/api/album/
+ * @since       1.0
+ * @deprecated  The joomla/facebook package is deprecated
  */
 class Album extends Object
 {

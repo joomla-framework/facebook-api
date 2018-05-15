@@ -11,8 +11,9 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Post class for the Joomla Framework.
  *
- * @link   https://developers.facebook.com/docs/reference/api/post/
- * @since  1.0
+ * @link        https://developers.facebook.com/docs/reference/api/post/
+ * @since       1.0
+ * @deprecated  The joomla/facebook package is deprecated
  */
 class Post extends Object
 {
