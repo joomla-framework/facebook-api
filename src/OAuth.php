@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Facebook Package
  *
- * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -16,7 +16,8 @@ use Joomla\Input\Input;
 /**
  * Joomla Framework class for generating Facebook API access token.
  *
- * @since  1.0
+ * @since       1.0
+ * @deprecated  The joomla/facebook package is deprecated
  */
 class OAuth extends Client
 {

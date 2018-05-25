@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Facebook Package
  *
- * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -11,8 +11,9 @@ namespace Joomla\Facebook;
 /**
  * Facebook API Link class for the Joomla Framework.
  *
- * @link   https://developers.facebook.com/docs/reference/api/link/
- * @since  1.0
+ * @link        https://developers.facebook.com/docs/reference/api/link/
+ * @since       1.0
+ * @deprecated  The joomla/facebook package is deprecated
  */
 class Link extends AbstractFacebookObject
 {

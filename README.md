@@ -1,5 +1,9 @@
 ## The Facebook Package [![Build Status](https://travis-ci.org/joomla-framework/facebook-api.png?branch=master)](https://travis-ci.org/joomla-framework/facebook-api)
 
+### Deprecated
+
+The `joomla/facebook` package is deprecated with no further updates planned.
+
 ### Using the Facebook Package
 
 The Facebook package is designed to be a straightforward interface for working with Facebook. It is based on the Graph API. You can find documentation on the API at [http://developers.facebook.com/docs/reference/api/](http://developers.facebook.com/docs/reference/api/).
