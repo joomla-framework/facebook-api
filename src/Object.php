@@ -8,9 +8,6 @@
 
 namespace Joomla\Facebook;
 
-use Joomla\Http\Http;
-use Joomla\Uri\Uri;
-
 /**
  * Facebook API object class for the Joomla Framework.
  *

@@ -63,7 +63,7 @@ class Album extends Object
 	public function createPhoto($album, $source, $message = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
 
 		if ($message)
@@ -105,7 +105,7 @@ class Album extends Object
 	public function createComment($album, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($album, 'comments', $data);

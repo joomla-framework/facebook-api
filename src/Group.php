@@ -117,7 +117,7 @@ class Group extends Object
 	public function createLink($group, $link, $message = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data         = array();
 		$data['link'] = $link;
 
 		if ($message)
@@ -228,7 +228,7 @@ class Group extends Object
 	public function createStatus($group, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($group, 'feed', $data);

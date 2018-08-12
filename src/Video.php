@@ -64,7 +64,7 @@ class Video extends Object
 	public function createComment($video, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($video, 'comments', $data);

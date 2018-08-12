@@ -9,9 +9,9 @@
 namespace Joomla\Facebook;
 
 use Joomla\Application\AbstractWebApplication;
-use Joomla\OAuth2\Client;
 use Joomla\Http\Http;
 use Joomla\Input\Input;
+use Joomla\OAuth2\Client;
 
 /**
  * Joomla Framework class for generating Facebook API access token.

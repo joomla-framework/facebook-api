@@ -55,8 +55,8 @@ abstract class AbstractFacebookObject
 	public function __construct($options = array(), Http $client = null, OAuth $oauth = null)
 	{
 		$this->options = $options;
-		$this->client = $client;
-		$this->oauth = $oauth;
+		$this->client  = $client;
+		$this->oauth   = $oauth;
 	}
 
 	/**
@@ -78,7 +78,7 @@ abstract class AbstractFacebookObject
 	{
 		// Get a new Uri object fousing the api url and given path.
 		$apiUrl = isset($this->options['api.url']) ? $this->options['api.url'] : null;
-		$uri = new Uri($apiUrl . $path);
+		$uri    = new Uri($apiUrl . $path);
 
 		if ($limit > 0)
 		{
