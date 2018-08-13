@@ -154,10 +154,8 @@ abstract class AbstractFacebookObject
 
 				return json_decode($response->body);
 			}
-			else
-			{
-				return false;
-			}
+
+			return false;
 		}
 
 		// Send the request.
@@ -193,15 +191,11 @@ abstract class AbstractFacebookObject
 				{
 					return json_decode($response->body);
 				}
-				else
-				{
-					return $response->headers['Location'];
-				}
+
+				return $response->headers['Location'];
 			}
-			else
-			{
-				return false;
-			}
+
+			return false;
 		}
 
 		// Send the request.
@@ -239,10 +233,8 @@ abstract class AbstractFacebookObject
 
 			return json_decode($response->body);
 		}
-		else
-		{
-			return false;
-		}
+
+		return false;
 	}
 
 	/**
@@ -275,10 +267,8 @@ abstract class AbstractFacebookObject
 
 			return json_decode($response->body);
 		}
-		else
-		{
-			return false;
-		}
+
+		return false;
 	}
 
 	/**

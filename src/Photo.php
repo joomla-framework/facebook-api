@@ -164,7 +164,7 @@ class Photo extends Object
 	public function createTag($photo, $to = null, $tagText = null, $x = null, $y = null)
 	{
 		// Set POST request parameters.
-		if (is_array($to))
+		if (\is_array($to))
 		{
 			$data['tags'] = $to;
 		}

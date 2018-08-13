@@ -176,7 +176,7 @@ class Facebook
 
 		if (class_exists($class) && property_exists($this, $name))
 		{
-			if (false == isset($this->$name))
+			if (isset($this->$name) == false)
 			{
 				$this->$name = new $class($this->options, $this->client, $this->oauth);
 			}
