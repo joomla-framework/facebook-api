@@ -7,7 +7,7 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "php": "^5.3.10|>=7.0 <7.2",
-        "joomla/oauth2": "^1.1.2|~2.0",
+        "joomla/oauth2": "^1.1.2",
         "joomla/input": "~1.0|~2.0",
         "joomla/http": "~1.0|~2.0",
         "joomla/uri": "~1.0|~2.0"
