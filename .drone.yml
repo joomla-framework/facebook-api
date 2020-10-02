@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: composer
-  image: joomlaprojects/docker-images:php7.4
+  image: joomlaprojects/docker-images:php7.1
   commands:
   - php -v
   - composer update
@@ -18,38 +18,10 @@ steps:
     path: /tmp/composer-cache
 
 - name: phpcs
-  image: joomlaprojects/docker-images:php7.4
+  image: joomlaprojects/docker-images:php7.1
   commands:
   - vendor/bin/phpcs --config-set installed_paths vendor/joomla/coding-standards
   - vendor/bin/phpcs -p --report=full --extensions=php --standard=Joomla src/
-
-- name: phpmd
-  image: joomlaprojects/docker-images:php7.4
-  commands:
-  - vendor/bin/phpmd src text cleancode
-  - vendor/bin/phpmd src text codesize
-  - vendor/bin/phpmd src text controversial
-  - vendor/bin/phpmd src text design
-  - vendor/bin/phpmd src text unusedcode
-  failure: ignore
-
-- name: phpstan
-  image: joomlaprojects/docker-images:php7.4
-  commands:
-  - vendor/bin/phpstan analyse src
-  failure: ignore
-
-- name: phploc
-  image: joomlaprojects/docker-images:php7.4
-  commands:
-  - phploc src
-  failure: ignore
-
-- name: phpcpd
-  image: joomlaprojects/docker-images:php7.4
-  commands:
-  - phpcpd src
-  failure: ignore
 
 volumes:
 - name: composer-cache
@@ -255,6 +227,6 @@ volumes:
 
 ---
 kind: signature
-hmac: 9dae6d0acfb810d4a52d71aa16d6ad788366003396fa9bd9f484b52f5a5cc4d7
+hmac: 08e181129a09926e7894eee386a33033e960caf829ab3e38e10fb59c351b7877
 
 ...
