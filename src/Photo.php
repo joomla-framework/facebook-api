@@ -148,7 +148,7 @@ class Photo extends Object
 	}
 
 	/**
-	 * Method to tag one or more Users in a photo. $to or $tag_text required.
+	 * Method to tag one or more Users in a photo. $to or $tagText required.
 	 * Requires authentication and publish_stream permission, user_photos permission for private photos.
 	 *
 	 * @param   string   $photo    The photo id.
