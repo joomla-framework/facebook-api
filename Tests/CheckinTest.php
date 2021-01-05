@@ -7,6 +7,7 @@
 namespace Joomla\Facebook\Tests;
 
 use Joomla\Facebook\Checkin;
+use Joomla\Http\Response;
 use stdClass;
 
 /**
@@ -44,16 +45,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getCheckin($checkin),
@@ -67,22 +69,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetCheckinFailure()
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getCheckin($checkin);
 	}
@@ -98,16 +98,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getComments($checkin),
@@ -121,22 +122,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetCommentsFailure()
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getComments($checkin);
 	}
@@ -154,19 +153,20 @@ class CheckinTest extends FacebookTestCase
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($checkin . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($checkin . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createComment($checkin, $message),
@@ -180,7 +180,7 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateCommentFailure()
 	{
@@ -188,19 +188,17 @@ class CheckinTest extends FacebookTestCase
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($checkin . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($checkin . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createComment($checkin, $message);
 	}
@@ -216,16 +214,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteComment($comment),
@@ -239,22 +238,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteCommentFailure()
 	{
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteComment($comment);
 	}
@@ -270,16 +267,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getLikes($checkin),
@@ -293,22 +291,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetLikesFailure()
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($checkin . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getLikes($checkin);
 	}
@@ -324,16 +320,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($checkin . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createLike($checkin),
@@ -347,22 +344,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateLikeFailure()
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($checkin . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createLike($checkin);
 	}
@@ -378,16 +373,17 @@ class CheckinTest extends FacebookTestCase
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($checkin . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteLike($checkin),
@@ -401,22 +397,20 @@ class CheckinTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteLikeFailure()
 	{
 		$checkin = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($checkin . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($checkin . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteLike($checkin);
 	}

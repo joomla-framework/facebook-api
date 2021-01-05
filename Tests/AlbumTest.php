@@ -7,6 +7,7 @@
 namespace Joomla\Facebook\Tests;
 
 use Joomla\Facebook\Album;
+use Joomla\Http\Response;
 use stdClass;
 
 /**
@@ -44,16 +45,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getAlbum($album),
@@ -67,22 +69,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetAlbumFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getAlbum($album);
 	}
@@ -98,16 +98,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/photos?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/photos?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getPhotos($album),
@@ -121,22 +122,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetPhotosFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/photos?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/photos?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getPhotos($album);
 	}
@@ -150,28 +149,30 @@ class AlbumTest extends FacebookTestCase
 	 */
 	public function testCreatePhoto()
 	{
-		$album = '124346363456';
-		$source = 'path/to/source';
+		$album   = '124346363456';
+		$source  = 'path/to/source';
 		$message = 'message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
-		$data['message'] = $message;
+		$data['message']         = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with(
-			$album . '/photos?access_token=' . $token['access_token'], $data,
-			array('Content-Type' => 'multipart/form-data')
-			)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with(
+						 $album . '/photos?access_token=' . $token['access_token'],
+						 $data,
+						 array('Content-Type' => 'multipart/form-data')
+					 )
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createPhoto($album, $source, $message),
@@ -185,32 +186,31 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreatePhotoFailure()
 	{
-		$album = '124346363456';
-		$source = '/path/to/source';
+		$album   = '124346363456';
+		$source  = '/path/to/source';
 		$message = 'message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
-		$data['message'] = $message;
+		$data['message']         = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with(
-			$album . '/photos?access_token=' . $token['access_token'], $data,
-			array('Content-Type' => 'multipart/form-data')
-			)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with(
+						 $album . '/photos?access_token=' . $token['access_token'],
+						 $data,
+						 array('Content-Type' => 'multipart/form-data')
+					 )
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createPhoto($album, $source, $message);
 	}
@@ -226,16 +226,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getComments($album),
@@ -249,22 +250,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetCommentsFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getComments($album);
 	}
@@ -278,23 +277,24 @@ class AlbumTest extends FacebookTestCase
 	 */
 	public function testCreateComment()
 	{
-		$album = '124346363456';
+		$album   = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($album . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($album . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createComment($album, $message),
@@ -308,27 +308,25 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateCommentFailure()
 	{
-		$album = '124346363456';
+		$album   = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($album . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($album . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createComment($album, $message);
 	}
@@ -344,16 +342,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteComment($comment),
@@ -367,22 +366,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteCommentFailure()
 	{
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteComment($comment);
 	}
@@ -398,16 +395,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getLikes($album),
@@ -421,22 +419,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetLikesFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getLikes($album);
 	}
@@ -452,16 +448,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($album . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($album . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createLike($album),
@@ -475,22 +472,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateLikeFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($album . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($album . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createLike($album);
 	}
@@ -506,16 +501,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($album . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($album . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteLike($album),
@@ -529,22 +525,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteLikeFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($album . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($album . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteLike($album);
 	}
@@ -560,16 +554,17 @@ class AlbumTest extends FacebookTestCase
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$token = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/picture?redirect=false&access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/picture?redirect=false&access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getPicture($album, false),
@@ -583,22 +578,20 @@ class AlbumTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetPictureFailure()
 	{
 		$album = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
-
-		$token = $this->oauth->getToken();
+		$returnData = new Response($this->errorString, 401);
+		$token      = $this->oauth->getToken();
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($album . '/picture?redirect=false&access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($album . '/picture?redirect=false&access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getPicture($album, false);
 	}

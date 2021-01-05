@@ -148,16 +148,14 @@ abstract class AbstractFacebookObject
 	{
 		if ($this->oauth != null)
 		{
-			if ($this->oauth->isAuthenticated())
-			{
-				$response = $this->oauth->query($this->fetchUrl($object));
-
-				return json_decode($response->body);
-			}
-			else
+			if (!$this->oauth->isAuthenticated())
 			{
 				return false;
 			}
+
+			$response = $this->oauth->query($this->fetchUrl($object));
+
+			return json_decode($response->body);
 		}
 
 		// Send the request.

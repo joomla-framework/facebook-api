@@ -7,6 +7,7 @@
 namespace Joomla\Facebook\Tests;
 
 use Joomla\Facebook\Status;
+use Joomla\Http\Response;
 use stdClass;
 
 /**
@@ -42,17 +43,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testGetStatus()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getStatus($status),
@@ -66,21 +68,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetStatusFailure()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getStatus($status);
 	}
@@ -94,17 +95,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testGetComments()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getComments($status),
@@ -118,21 +120,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetCommentsFailure()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getComments($status);
 	}
@@ -146,22 +147,23 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testCreateComment()
 	{
-		$token = $this->oauth->getToken();
-		$status = '124346363456';
+		$token   = $this->oauth->getToken();
+		$status  = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($status . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($status . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createComment($status, $message),
@@ -175,27 +177,25 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateCommentFailure()
 	{
-		$exception = false;
-		$token = $this->oauth->getToken();
-		$status = '124346363456';
+		$token   = $this->oauth->getToken();
+		$status  = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($status . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($status . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createComment($status, $message);
 	}
@@ -209,17 +209,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testDeleteComment()
 	{
-		$token = $this->oauth->getToken();
+		$token   = $this->oauth->getToken();
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteComment($comment, $this->oauth),
@@ -233,22 +234,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteCommentFailure()
 	{
-		$exception = false;
-		$token = $this->oauth->getToken();
+		$token   = $this->oauth->getToken();
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteComment($comment, $this->oauth);
 	}
@@ -262,17 +261,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testGetLikes()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getLikes($status),
@@ -286,21 +286,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetLikesFailure()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($status . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($status . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getLikes($status);
 	}
@@ -314,17 +313,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testCreateLike()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($status . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($status . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createLike($status),
@@ -338,22 +338,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateLikeFailure()
 	{
-		$exception = false;
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($status . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($status . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createLike($status);
 	}
@@ -367,17 +365,18 @@ class StatusTest extends FacebookTestCase
 	 */
 	public function testDeleteLike()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($status . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($status . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteLike($status),
@@ -391,22 +390,20 @@ class StatusTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteLikeFailure()
 	{
-		$exception = false;
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($status . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($status . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteLike($status);
 	}

@@ -7,6 +7,7 @@
 namespace Joomla\Facebook\Tests;
 
 use Joomla\Facebook\Video;
+use Joomla\Http\Response;
 use stdClass;
 
 /**
@@ -45,14 +46,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getVideo($video),
@@ -66,21 +68,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetVideoFailure()
 	{
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getVideo($video);
 	}
@@ -97,14 +98,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getComments($video),
@@ -118,21 +120,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  \RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetCommentsFailure()
 	{
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/comments?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/comments?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getComments($video);
 	}
@@ -146,22 +147,23 @@ class VideoTest extends FacebookTestCase
 	 */
 	public function testCreateComment()
 	{
-		$token = $this->oauth->getToken();
-		$video = '124346363456';
+		$token   = $this->oauth->getToken();
+		$video   = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($video . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($video . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createComment($video, $message),
@@ -175,27 +177,25 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateCommentFailure()
 	{
-		$exception = false;
-		$token = $this->oauth->getToken();
-		$video = '124346363456';
+		$token   = $this->oauth->getToken();
+		$video   = '124346363456';
 		$message = 'test message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($video . '/comments?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($video . '/comments?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createComment($video, $message);
 	}
@@ -209,17 +209,18 @@ class VideoTest extends FacebookTestCase
 	 */
 	public function testDeleteComment()
 	{
-		$token = $this->oauth->getToken();
+		$token   = $this->oauth->getToken();
 		$comment = '5148941614_12343468';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteComment($comment, $this->oauth),
@@ -233,22 +234,21 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteCommentFailure()
 	{
 		$exception = false;
-		$token = $this->oauth->getToken();
-		$comment = '5148941614_12343468';
+		$token     = $this->oauth->getToken();
+		$comment   = '5148941614_12343468';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($comment . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($comment . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteComment($comment, $this->oauth);
 	}
@@ -265,14 +265,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getLikes($video),
@@ -286,21 +287,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetLikesFailure()
 	{
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getLikes($video);
 	}
@@ -317,14 +317,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($video . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($video . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createLike($video),
@@ -338,22 +339,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateLikeFailure()
 	{
-		$exception = false;
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($video . '/likes?access_token=' . $token['access_token'], '')
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($video . '/likes?access_token=' . $token['access_token'], '')
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createLike($video);
 	}
@@ -370,14 +369,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($video . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($video . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteLike($video),
@@ -391,22 +391,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteLikeFailure()
 	{
-		$exception = false;
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($video . '/likes?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($video . '/likes?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteLike($video);
 	}
@@ -423,14 +421,15 @@ class VideoTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/picture?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/picture?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getPicture($video),
@@ -444,21 +443,20 @@ class VideoTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetPictureFailure()
 	{
 		$token = $this->oauth->getToken();
 		$video = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($video . '/picture?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($video . '/picture?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getPicture($video);
 	}

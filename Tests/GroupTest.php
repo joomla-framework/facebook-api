@@ -52,14 +52,15 @@ class GroupTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$group = '124346363456';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getGroup($group),
@@ -73,21 +74,20 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetGroupFailure()
 	{
 		$token = $this->oauth->getToken();
 		$group = '124346363456';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getGroup($group);
 	}
@@ -104,14 +104,15 @@ class GroupTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/feed?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/feed?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getFeed($group),
@@ -125,21 +126,20 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetFeedFailure()
 	{
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/feed?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/feed?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getFeed($group);
 	}
@@ -156,14 +156,15 @@ class GroupTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/members?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/members?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getMembers($group),
@@ -177,21 +178,20 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetMembersFailure()
 	{
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/members?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/members?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getMembers($group);
 	}
@@ -208,14 +208,15 @@ class GroupTest extends FacebookTestCase
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/docs?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/docs?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->getDocs($group),
@@ -229,21 +230,20 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetDocsFailure()
 	{
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/docs?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/docs?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getDocs($group);
 	}
@@ -259,7 +259,7 @@ class GroupTest extends FacebookTestCase
 	{
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
-		$type = 'large';
+		$type  = 'large';
 
 		$returnData = new Response;
 
@@ -271,14 +271,15 @@ class GroupTest extends FacebookTestCase
 		}
 		else
 		{
-			$returnData->code = 302;
+			$returnData->code                = 302;
 			$returnData->headers['Location'] = $this->sampleUrl;
 		}
 
 		$this->client->expects($this->once())
-			->method('get')
-			->with($group . '/picture?type=' . $type . '&access_token=' . $token['access_token'])
-			->willReturn($returnData);
+					 ->method('get')
+					 ->with($group . '/picture?type=' . $type . '&access_token=' . $token['access_token'])
+					 ->willReturn($returnData)
+		;
 
 		// Handle the response object differently based on whether we're using joomla/http 2.0
 		if (method_exists($returnData, 'getStatusCode'))
@@ -303,22 +304,21 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testGetPictureFailure()
 	{
 		$token = $this->oauth->getToken();
 		$group = '156174391080008';
-		$type = 'large';
+		$type  = 'large';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('get')
-		->with($group . '/picture?type=' . $type . '&access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('get')
+					 ->with($group . '/picture?type=' . $type . '&access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->getPicture($group, $type);
 	}
@@ -332,24 +332,25 @@ class GroupTest extends FacebookTestCase
 	 */
 	public function testCreateLink()
 	{
-		$token = $this->oauth->getToken();
-		$group = '156174391080008';
-		$link = 'www.example.com';
+		$token   = $this->oauth->getToken();
+		$group   = '156174391080008';
+		$link    = 'www.example.com';
 		$message = 'This is a message';
 
 		// Set POST request parameters.
-		$data = array();
-		$data['link'] = $link;
+		$data            = array();
+		$data['link']    = $link;
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createLink($group, $link, $message),
@@ -363,29 +364,28 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateLinkFailure()
 	{
 		$exception = false;
-		$token = $this->oauth->getToken();
-		$group = '156174391080008';
-		$link = 'www.example.com';
-		$message = 'This is a message';
+		$token     = $this->oauth->getToken();
+		$group     = '156174391080008';
+		$link      = 'www.example.com';
+		$message   = 'This is a message';
 
 		// Set POST request parameters.
-		$data = array();
-		$data['link'] = $link;
+		$data            = array();
+		$data['link']    = $link;
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createLink($group, $link, $message);
 	}
@@ -400,16 +400,17 @@ class GroupTest extends FacebookTestCase
 	public function testDeleteLink()
 	{
 		$token = $this->oauth->getToken();
-		$link = '156174391080008_235345346';
+		$link  = '156174391080008_235345346';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($link . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($link . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteLink($link),
@@ -423,22 +424,21 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteLinkFailure()
 	{
 		$exception = false;
-		$token = $this->oauth->getToken();
-		$link = '156174391080008_235345346';
+		$token     = $this->oauth->getToken();
+		$link      = '156174391080008_235345346';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($link . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($link . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteLink($link);
 	}
@@ -452,40 +452,47 @@ class GroupTest extends FacebookTestCase
 	 */
 	public function testCreatePost()
 	{
-		$token = $this->oauth->getToken();
-		$group = '134534252';
-		$message = 'message';
-		$link = 'www.example.com';
-		$picture = 'thumbnail.example.com';
-		$name = 'name';
-		$caption = 'caption';
+		$token       = $this->oauth->getToken();
+		$group       = '134534252';
+		$message     = 'message';
+		$link        = 'www.example.com';
+		$picture     = 'thumbnail.example.com';
+		$name        = 'name';
+		$caption     = 'caption';
 		$description = 'description';
-		$actions = array('{"name":"Share","link":"http://networkedblogs.com/hGWk3?a=share"}');
+		$actions     = array('{"name":"Share","link":"http://networkedblogs.com/hGWk3?a=share"}');
 
 		// Set POST request parameters.
-		$data = array();
-		$data['message'] = $message;
-		$data['link'] = $link;
-		$data['name'] = $name;
-		$data['caption'] = $caption;
+		$data                = array();
+		$data['message']     = $message;
+		$data['link']        = $link;
+		$data['name']        = $name;
+		$data['caption']     = $caption;
 		$data['description'] = $description;
-		$data['actions'] = $actions;
-		$data['picture'] = $picture;
+		$data['actions']     = $actions;
+		$data['picture']     = $picture;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createPost(
-				$group, $message, $link, $picture, $name,
-				$caption, $description, $actions
-				),
+				$group,
+				$message,
+				$link,
+				$picture,
+				$name,
+				$caption,
+				$description,
+				$actions
+			),
 			$this->equalTo(json_decode($this->sampleString))
 		);
 	}
@@ -496,43 +503,48 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreatePostFailure()
 	{
-		$token = $this->oauth->getToken();
-		$group = '134534252';
-		$message = 'message';
-		$link = 'www.example.com';
-		$picture = 'thumbnail.example.com';
-		$name = 'name';
-		$caption = 'caption';
+		$token       = $this->oauth->getToken();
+		$group       = '134534252';
+		$message     = 'message';
+		$link        = 'www.example.com';
+		$picture     = 'thumbnail.example.com';
+		$name        = 'name';
+		$caption     = 'caption';
 		$description = 'description';
-		$actions = array('{"name":"Share","link":"http://networkedblogs.com/hGWk3?a=share"}');
+		$actions     = array('{"name":"Share","link":"http://networkedblogs.com/hGWk3?a=share"}');
 
 		// Set POST request parameters.
-		$data = array();
-		$data['message'] = $message;
-		$data['link'] = $link;
-		$data['name'] = $name;
-		$data['caption'] = $caption;
+		$data                = array();
+		$data['message']     = $message;
+		$data['link']        = $link;
+		$data['name']        = $name;
+		$data['caption']     = $caption;
 		$data['description'] = $description;
-		$data['actions'] = $actions;
-		$data['picture'] = $picture;
+		$data['actions']     = $actions;
+		$data['picture']     = $picture;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createPost(
-			$group, $message, $link, $picture, $name,
-			$caption, $description, $actions
-			);
+			$group,
+			$message,
+			$link,
+			$picture,
+			$name,
+			$caption,
+			$description,
+			$actions
+		);
 	}
 
 	/**
@@ -545,16 +557,17 @@ class GroupTest extends FacebookTestCase
 	public function testDeletePost()
 	{
 		$token = $this->oauth->getToken();
-		$post = '5148941614_234324';
+		$post  = '5148941614_234324';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($post . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($post . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deletePost($post),
@@ -568,22 +581,21 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeletePostFailure()
 	{
 		$exception = false;
-		$token = $this->oauth->getToken();
-		$post = '5148941614_234324';
+		$token     = $this->oauth->getToken();
+		$post      = '5148941614_234324';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($post . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($post . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deletePost($post);
 	}
@@ -597,22 +609,23 @@ class GroupTest extends FacebookTestCase
 	 */
 	public function testCreateStatus()
 	{
-		$token = $this->oauth->getToken();
-		$group = '134534252457';
+		$token   = $this->oauth->getToken();
+		$group   = '134534252457';
 		$message = 'This is a message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->createStatus($group, $message),
@@ -626,26 +639,25 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testCreateStatusFailure()
 	{
-		$token = $this->oauth->getToken();
-		$group = '134534252457';
+		$token   = $this->oauth->getToken();
+		$group   = '134534252457';
 		$message = 'This is a message';
 
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('post')
-		->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
-		->will($this->returnValue($returnData));
+					 ->method('post')
+					 ->with($group . '/feed' . '?access_token=' . $token['access_token'], $data)
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->createStatus($group, $message);
 	}
@@ -659,17 +671,18 @@ class GroupTest extends FacebookTestCase
 	 */
 	public function testDeleteStatus()
 	{
-		$token = $this->oauth->getToken();
+		$token  = $this->oauth->getToken();
 		$status = '2457344632_5148941614';
 
-		$returnData = new stdClass;
+		$returnData       = new stdClass;
 		$returnData->code = 200;
 		$returnData->body = true;
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($status . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($status . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->assertThat(
 			$this->object->deleteStatus($status),
@@ -683,22 +696,21 @@ class GroupTest extends FacebookTestCase
 	 * @return  void
 	 *
 	 * @since   1.0
-	 * @expectedException  RuntimeException
+	 * @expectedException  \Joomla\Http\Exception\UnexpectedResponseException
 	 */
 	public function testDeleteStatusFailure()
 	{
 		$exception = false;
-		$token = $this->oauth->getToken();
-		$status = '2457344632_5148941614';
+		$token     = $this->oauth->getToken();
+		$status    = '2457344632_5148941614';
 
-		$returnData = new stdClass;
-		$returnData->code = 401;
-		$returnData->body = $this->errorString;
+		$returnData = new Response($this->errorString, 401);
 
 		$this->client->expects($this->once())
-		->method('delete')
-		->with($status . '?access_token=' . $token['access_token'])
-		->will($this->returnValue($returnData));
+					 ->method('delete')
+					 ->with($status . '?access_token=' . $token['access_token'])
+					 ->will($this->returnValue($returnData))
+		;
 
 		$this->object->deleteStatus($status);
 	}
