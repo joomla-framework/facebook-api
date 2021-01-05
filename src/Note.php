@@ -62,7 +62,7 @@ class Note extends AbstractFacebookObject
 	public function createComment($note, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($note, 'comments', $data);

@@ -148,7 +148,7 @@ class Photo extends AbstractFacebookObject
 	}
 
 	/**
-	 * Method to tag one or more Users in a photo. $to or $tag_text required.
+	 * Method to tag one or more Users in a photo. $to or $tagText required.
 	 * Requires authentication and publish_stream permission, user_photos permission for private photos.
 	 *
 	 * @param   string   $photo    The photo id.
@@ -164,7 +164,7 @@ class Photo extends AbstractFacebookObject
 	public function createTag($photo, $to = null, $tagText = null, $x = null, $y = null)
 	{
 		// Set POST request parameters.
-		if (is_array($to))
+		if (\is_array($to))
 		{
 			$data['tags'] = $to;
 		}

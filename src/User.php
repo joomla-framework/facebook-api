@@ -314,10 +314,10 @@ class User extends AbstractFacebookObject
 	public function createAlbum($user, $name, $description = null, $privacy = null)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['name'] = $name;
+		$data                = array();
+		$data['name']        = $name;
 		$data['description'] = $description;
-		$data['privacy'] = $privacy;
+		$data['privacy']     = $privacy;
 
 		return $this->createConnection($user, 'albums', $data);
 	}
@@ -358,13 +358,13 @@ class User extends AbstractFacebookObject
 	public function createCheckin($user, $place, $coordinates, $tags = null, $message = null, $link = null, $picture = null)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['place'] = $place;
+		$data                = array();
+		$data['place']       = $place;
 		$data['coordinates'] = $coordinates;
-		$data['tags'] = $tags;
-		$data['message'] = $message;
-		$data['link'] = $link;
-		$data['picture'] = $picture;
+		$data['tags']        = $tags;
+		$data['message']     = $message;
+		$data['link']        = $link;
+		$data['picture']     = $picture;
 
 		return $this->createConnection($user, 'checkins', $data);
 	}
@@ -441,13 +441,13 @@ class User extends AbstractFacebookObject
 	)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['start_time'] = $startTime;
-		$data['name'] = $name;
-		$data['end_time'] = $endTime;
-		$data['description'] = $description;
-		$data['location'] = $location;
-		$data['location_id'] = $locationId;
+		$data                 = array();
+		$data['start_time']   = $startTime;
+		$data['name']         = $name;
+		$data['end_time']     = $endTime;
+		$data['description']  = $description;
+		$data['location']     = $location;
+		$data['location_id']  = $locationId;
 		$data['privacy_type'] = $privacyType;
 
 		return $this->createConnection($user, 'events', $data);
@@ -474,13 +474,13 @@ class User extends AbstractFacebookObject
 	)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['start_time'] = $startTime;
-		$data['name'] = $name;
-		$data['end_time'] = $endTime;
-		$data['description'] = $description;
-		$data['location'] = $location;
-		$data['location_id'] = $locationId;
+		$data                 = array();
+		$data['start_time']   = $startTime;
+		$data['name']         = $name;
+		$data['end_time']     = $endTime;
+		$data['description']  = $description;
+		$data['location']     = $location;
+		$data['location_id']  = $locationId;
 		$data['privacy_type'] = $privacyType;
 
 		return $this->createConnection($event, null, $data);
@@ -550,8 +550,8 @@ class User extends AbstractFacebookObject
 	public function createLink($user, $link, $message = null)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['link'] = $link;
+		$data            = array();
+		$data['link']    = $link;
 		$data['message'] = $message;
 
 		return $this->createConnection($user, 'feed', $data);
@@ -604,7 +604,7 @@ class User extends AbstractFacebookObject
 	public function createNote($user, $subject, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['subject'] = $subject;
 		$data['message'] = $message;
 
@@ -646,11 +646,11 @@ class User extends AbstractFacebookObject
 	public function createPhoto($user, $source, $message = null, $place = null, $noStory = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
-		$data['message'] = $message;
-		$data['place'] = $place;
-		$data['no_story'] = $noStory;
+		$data['message']         = $message;
+		$data['place']           = $place;
+		$data['no_story']        = $noStory;
 
 		return $this->createConnection($user, 'photos', $data, array('Content-Type' => 'multipart/form-data'));
 	}
@@ -708,18 +708,18 @@ class User extends AbstractFacebookObject
 	)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['message'] = $message;
-		$data['link'] = $link;
-		$data['name'] = $name;
-		$data['caption'] = $caption;
-		$data['description'] = $description;
-		$data['actions'] = $actions;
-		$data['place'] = $place;
-		$data['tags'] = $tags;
-		$data['privacy'] = $privacy;
+		$data                      = array();
+		$data['message']           = $message;
+		$data['link']              = $link;
+		$data['name']              = $name;
+		$data['caption']           = $caption;
+		$data['description']       = $description;
+		$data['actions']           = $actions;
+		$data['place']             = $place;
+		$data['tags']              = $tags;
+		$data['privacy']           = $privacy;
 		$data['object_attachment'] = $objectAttachment;
-		$data['picture'] = $picture;
+		$data['picture']           = $picture;
 
 		return $this->createConnection($user, 'feed', $data);
 	}
@@ -769,7 +769,7 @@ class User extends AbstractFacebookObject
 	public function createStatus($user, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($user, 'feed', $data);
@@ -823,10 +823,10 @@ class User extends AbstractFacebookObject
 	public function createVideo($user, $source, $title = null, $description = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
-		$data['title'] = $title;
-		$data['description'] = $description;
+		$data['title']           = $title;
+		$data['description']     = $description;
 
 		return $this->createConnection($user, 'videos', $data, array('Content-Type' => 'multipart/form-data'));
 	}

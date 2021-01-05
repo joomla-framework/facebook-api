@@ -62,7 +62,7 @@ class Checkin extends AbstractFacebookObject
 	public function createComment($checkin, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($checkin, 'comments', $data);

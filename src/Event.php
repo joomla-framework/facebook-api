@@ -63,8 +63,8 @@ class Event extends AbstractFacebookObject
 	public function createLink($event, $link, $message = null)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['link'] = $link;
+		$data            = array();
+		$data['link']    = $link;
 		$data['message'] = $message;
 
 		return $this->createConnection($event, 'feed', $data);
@@ -105,14 +105,14 @@ class Event extends AbstractFacebookObject
 	)
 	{
 		// Set POST request parameters.
-		$data = array();
-		$data['message'] = $message;
-		$data['link'] = $link;
-		$data['name'] = $name;
-		$data['caption'] = $caption;
+		$data                = array();
+		$data['message']     = $message;
+		$data['link']        = $link;
+		$data['name']        = $name;
+		$data['caption']     = $caption;
 		$data['description'] = $description;
-		$data['actions'] = $actions;
-		$data['picture'] = $picture;
+		$data['actions']     = $actions;
+		$data['picture']     = $picture;
 
 		return $this->createConnection($event, 'feed', $data);
 	}
@@ -145,7 +145,7 @@ class Event extends AbstractFacebookObject
 	public function createStatus($event, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($event, 'feed', $data);
@@ -210,7 +210,7 @@ class Event extends AbstractFacebookObject
 	public function createInvite($event, $users)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data          = array();
 		$data['users'] = $users;
 
 		return $this->createConnection($event, 'invited', $data);
@@ -458,7 +458,7 @@ class Event extends AbstractFacebookObject
 	public function createPhoto($event, $source, $message = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
 
 		if ($message)
@@ -502,7 +502,7 @@ class Event extends AbstractFacebookObject
 	public function createVideo($event, $source, $title = null, $description = null)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data                    = array();
 		$data[basename($source)] = '@' . realpath($source);
 
 		if ($title)

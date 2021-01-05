@@ -62,7 +62,7 @@ class Link extends AbstractFacebookObject
 	public function createComment($link, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($link, 'comments', $data);

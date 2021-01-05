@@ -76,7 +76,7 @@ class Comment extends AbstractFacebookObject
 	public function createComment($comment, $message)
 	{
 		// Set POST request parameters.
-		$data = array();
+		$data            = array();
 		$data['message'] = $message;
 
 		return $this->createConnection($comment, 'comments', $data);

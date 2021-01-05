@@ -1,4 +1,4 @@
-## The Facebook Package [![Build Status](https://travis-ci.org/joomla-framework/facebook-api.png?branch=master)](https://travis-ci.org/joomla-framework/facebook-api)
+## The Facebook Package [![Build Status](https://ci.joomla.org/api/badges/joomla-framework/facebook-api/status.svg)](https://ci.joomla.org/joomla-framework/facebook-api)
 
 ### Deprecated
 
@@ -133,4 +133,10 @@ Alternatively, you can simply run the following from the command line:
 
 ```sh
 composer require joomla/facebook "2.0.*@dev"
+```
+
+If you want to include the test sources, use
+
+```sh
+composer require --prefer-source joomla/facebook "~1.0"
 ```
