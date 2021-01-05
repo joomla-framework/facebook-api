@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Status extends Object
+class Status extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a status message. Requires authentication.

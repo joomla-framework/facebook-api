@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Video extends Object
+class Video extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a video. Requires authentication and user_videos or friends_videos permission for private videos.

@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Post extends Object
+class Post extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a post. Requires authentication and read_stream permission for all data.

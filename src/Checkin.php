@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Checkin extends Object
+class Checkin extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a checkin. Requires authentication and user_checkins or friends_checkins permission.

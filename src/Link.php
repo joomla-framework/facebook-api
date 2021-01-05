@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Link extends Object
+class Link extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a link. Requires authentication and read_stream permission for non-public links.

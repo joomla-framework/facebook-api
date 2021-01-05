@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Note extends Object
+class Note extends AbstractFacebookObject
 {
 	/**
 	 * Method to get a note. Requires authentication and user_notes or friends_notes permission for non-public notes.

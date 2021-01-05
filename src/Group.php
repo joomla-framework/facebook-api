@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Group extends Object
+class Group extends AbstractFacebookObject
 {
 	/**
 	 * Method to read a group. Requires authentication and user_groups or friends_groups permission for non-public groups.
