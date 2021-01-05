@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Event extends Object
+class Event extends AbstractFacebookObject
 {
 	/**
 	 * Method to get information about an event visible to the current user. Requires authentication.

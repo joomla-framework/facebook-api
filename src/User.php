@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class User extends Object
+class User extends AbstractFacebookObject
 {
 	/**
 	 * Method to get the specified user's details. Authentication is required only for some fields.

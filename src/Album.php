@@ -15,7 +15,7 @@ namespace Joomla\Facebook;
  * @since       1.0
  * @deprecated  The joomla/facebook package is deprecated
  */
-class Album extends Object
+class Album extends AbstractFacebookObject
 {
 	/**
 	 * Method to get an album. Requires authentication and user_photos or friends_photos permission for private photos.
